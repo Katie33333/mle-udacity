@@ -1,4 +1,5 @@
-
+## Regression - goal is to predict values
+## Classification - yes or no (spam or not, will a user dl an app or not, sick or not)
 ## Linear Regression Quiz
 ```
 # TODO: Add import statements
@@ -63,3 +64,65 @@ Why can't we use the math to solve the unknowns instead of going through many gr
 
 **Simple versus Complex** - Model to send rocket to the moon or a medical model - little room for error so it's okay if it's more complex versus a video recommendation system that's ok if there's error but needs to run fast against big data.  It requires simplicity.  The **lambda** parameter lets us tune how much complexity is acceptable.  If we have a large lambda, we're punishing the complex model by a lot thus picking a simpler model.  A small lambda punishes complexity by a small amount meaning we're okay with having more complex models.
 * See L1 versus L2 regularization screen shot
+
+## Classification Algorithms
+
+**Perceptron Algorithm** - basis for neural networks
+
+AND and OR perceptrons have different weights and biases
+
+XOR perceptron returns a true if either of the inputs are true
+
+**Perceptron trick** - misclassified points want the line to come closer
+
+Example:
+```
+import numpy as np
+# Setting the random seed, feel free to change it and see different solutions.
+np.random.seed(42)
+
+def stepFunction(t):
+    if t >= 0:
+        return 1
+    return 0
+
+def prediction(X, W, b):
+    return stepFunction((np.matmul(X,W)+b)[0])
+
+# TODO: Fill in the code below to implement the perceptron trick.
+# The function should receive as inputs the data X, the labels y,
+# the weights W (as an array), and the bias b,
+# update the weights and bias W, b, according to the perceptron algorithm,
+# and return W and b.
+def perceptronStep(X, y, W, b, learn_rate = 0.01):
+    for i in range(len(X)):
+        y_hat = prediction(X[i],W,b)
+        if y[i]-y_hat == 1:
+            W[0] += X[i][0]*learn_rate
+            W[1] += X[i][1]*learn_rate
+            b += learn_rate
+        elif y[i]-y_hat == -1:
+            W[0] -= X[i][0]*learn_rate
+            W[1] -= X[i][1]*learn_rate
+            b -= learn_rate
+    return W, b
+
+    
+# This function runs the perceptron algorithm repeatedly on the dataset,
+# and returns a few of the boundary lines obtained in the iterations,
+# for plotting purposes.
+# Feel free to play with the learning rate and the num_epochs,
+# and see your results plotted below.
+def trainPerceptronAlgorithm(X, y, learn_rate = 0.01, num_epochs = 25):
+    x_min, x_max = min(X.T[0]), max(X.T[0])
+    y_min, y_max = min(X.T[1]), max(X.T[1])
+    W = np.array(np.random.rand(2,1))
+    b = np.random.rand(1)[0] + x_max
+    # These are the solution lines that get plotted below.
+    boundary_lines = []
+    for i in range(num_epochs):
+        # In each epoch, we apply the perceptron step.
+        W, b = perceptronStep(X, y, W, b, learn_rate)
+        boundary_lines.append((-W[0]/W[1], -b/W[1]))
+    return boundary_lines
+```
