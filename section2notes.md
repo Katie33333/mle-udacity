@@ -126,3 +126,14 @@ def trainPerceptronAlgorithm(X, y, learn_rate = 0.01, num_epochs = 25):
         boundary_lines.append((-W[0]/W[1], -b/W[1]))
     return boundary_lines
 ```
+## Decision Trees
+**Entropy** - how many different ways (combinations) can organize something?  A lot = high entropy.  (Ice, water, vapor example).  The more homogenious the set is, the less ways there are to organize it, and the less entropy it has
+
+* For every node in the decision tree we can calculate the entropy of the parent node and then we calculate the entropy of the two children.  **Information gain** is the `etropy(parent) - 0.5 [Entropy(child1) + Entropy(child2)]`
+
+* Decision trees tend to overfit
+
+* Random Forest - pick a subset of features and build a tree.  Pick different features, and build another tree and so on.  When we get a new data point, let all trees make a prediction and pick the one that comes up the most
+
+* Large depth very often causes overfitting, since a tree that is too deep, can memorize the data. Small depth can result in a very simple model, which may cause underfitting.
+* Small minimum samples per split may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large minimum samples may result in the tree not having enough flexibility to get built, and may result in underfitting.
