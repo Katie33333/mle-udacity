@@ -138,3 +138,20 @@ def trainPerceptronAlgorithm(X, y, learn_rate = 0.01, num_epochs = 25):
 * Large depth very often causes overfitting, since a tree that is too deep, can memorize the data. Small depth can result in a very simple model, which may cause underfitting.
 * Small minimum samples per split may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large minimum samples may result in the tree not having enough flexibility to get built, and may result in underfitting.
 
+## Exercise to tune decision tree:
+```
+# Training the model
+model = DecisionTreeClassifier(max_depth=6, min_samples_leaf=6, min_samples_split=10)
+model.fit(X_train, y_train)
+
+# Making predictions
+y_train_pred = model.predict(X_train)
+y_test_pred = model.predict(X_test)
+
+# Calculating accuracies
+train_accuracy = accuracy_score(y_train, y_train_pred)
+test_accuracy = accuracy_score(y_test, y_test_pred)
+
+print('The training accuracy is', train_accuracy)
+print('The test accuracy is', test_accuracy)
+```
