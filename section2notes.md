@@ -155,3 +155,12 @@ test_accuracy = accuracy_score(y_test, y_test_pred)
 print('The training accuracy is', train_accuracy)
 print('The test accuracy is', test_accuracy)
 ```
+
+## Naive Bayes
+* Naive Bayes is more of a probablistic algorithm based on playing with the concept of conditional probability.  Easy to implement and fast to train
+* We'll study one of it's interesting implementations - Natural Language Processing   
+* Prior - Guess with info we already had
+* Posterior - Guess based on new info
+* **Bayes Theorem** - what we know versus what we infer
+
+* `Being able to identify spam messages is a binary classification problem as messages are classified as either 'Spam' or 'Not Spam' and nothing else. Also, this is a supervised learning problem, as we know what are trying to predict. We will be feeding a labelled dataset into the model, that it can learn from, to make future predictions.`
