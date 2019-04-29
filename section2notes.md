@@ -212,3 +212,37 @@ y_pred = model.predict(X)
 # TODO: Calculate the accuracy and assign it to the variable acc.
 acc = accuracy_score(y, y_pred)
 ```
+
+## Ensemble Methods
+* join a bunch of models together to get a better model - 2 of the most popular are bagging (bootstrap aggregating) and boosting.  The separate models "weak learners" don't even need to be very good -- just slightly better than random chance to create a "strong learner"
+
+* **Adaboost** - create models and highly weight the misclassified points so the next iteration of the model classifies them correctly - Combine all models to fit the data well
+
+Additional Resources on Boosting
+The original paper - A link to the original paper on boosting by Yoav Freund and Robert E. Schapire. https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf
+An explanation about why boosting is so important - A great article on boosting by a Kaggle master, Ben Gorman. http://blog.kaggle.com/2017/01/23/a-kaggle-master-explains-gradient-boosting/
+A useful Quora post - A number of useful explanations about boosting. https://www.quora.com/What-is-an-intuitive-explanation-of-Gradient-Boosting
+
+AdaBoost in sklearn
+Building an AdaBoost model in sklearn is no different than building any other model. You can use scikit-learn's AdaBoost Classifier class. This class provides the functions to define and fit the model to your data.
+
+```
+>>> from sklearn.ensemble import AdaBoostClassifier
+>>> model = AdaBoostClassifier()
+>>> model.fit(x_train, y_train)
+>>> model.predict(x_test)
+```
+In the example above, the model variable is a decision tree model that has been fitted to the data x_values and y_values. The functions fit and predict work exactly as before.
+
+Hyperparameters
+When we define the model, we can specify the hyperparameters. In practice, the most common ones are
+
+base_estimator: The model utilized for the weak learners (Warning: Don't forget to import the model that you decide to use for the weak learner).
+n_estimators: The maximum number of weak learners used.
+
+For example, here we define a model which uses decision trees of max_depth 2 as the weak learners, and it allows a maximum of 4 of them.
+
+```
+>>> from sklearn.tree import DecisionTreeClassifier
+>>> model = AdaBoostClassifier(base_estimator = DecisionTreeClassifier(max_depth=2), n_estimators = 4)
+```
