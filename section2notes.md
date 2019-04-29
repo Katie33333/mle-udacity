@@ -246,3 +246,48 @@ For example, here we define a model which uses decision trees of max_depth 2 as 
 >>> from sklearn.tree import DecisionTreeClassifier
 >>> model = AdaBoostClassifier(base_estimator = DecisionTreeClassifier(max_depth=2), n_estimators = 4)
 ```
+
+QUESTION 1 OF 4
+
+Why is the term "Naive" used in the Naive Bayes Classifier?
+
+The resulting probabilities are too small, and need to be normalized in order to make the algorithm useful.
+**We are assuming the features are independent events, when they may not be so.**
+
+The algorithm's takes too long to train when the data is large.
+
+SUBMIT
+
+
+QUESTION 2 OF 4
+
+What is an advantage of L1 regularization over L2 regularization?
+
+It's much faster.
+
+It works better when the data is dense, namely, when not many of the columns are zero.
+
+It tends to use all the weights equally.
+**It tends to turn a lot of weights into zero, while leaving only the most important ones, thus helping in feature selection.**
+
+SUBMIT
+
+QUESTION 3 OF 4
+
+Which one of the following could reduce overfitting in a random forest classifier?
+**Increase the number of trees**
+
+Increase the depth of the trees
+
+Decrease the threshold in the leaves
+
+SUBMIT
+QUESTION 4 OF 4
+
+Which models can be used for non-binary classification?(select all that apply)
+
+Logistic Regression
+**Decision Trees**
+**Random Forests**
+Linear Regression
+**Boosted Trees**
