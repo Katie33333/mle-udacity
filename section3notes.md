@@ -30,5 +30,11 @@ Can't always find the right grouping since we rely on distance to center (Think 
 **Average Link** - looks at the distance between a point and the average distance for all other points
 **Ward's method** - default method in scikit learn and looks to minimize variance between clusters - finds a central point in two clusters, takes an average for all other distances in the cluster, to the power of 2
 
+Implementation - scikit learn for ward's method and scipy for drawing dendrograms (see screen shots)
+To determine which clustering result better matches the original labels of the samples, we can use **adjusted_rand_score** which is an external cluster validation index which results in a score between -1 and 1, where 1 means two clusterings are identical of how they grouped the samples in a dataset (regardless of what label is assigned to each cluster).
+
+Looking at this, we can see that the forth column has smaller values than the rest of the columns, and so its variance counts for less in the clustering process (since clustering is based on distance). Let us **normalize** the dataset so that each dimension lies between 0 and 1, so they have equal weight in the clustering process.
+This is done by subtracting the minimum from each column then dividing the difference by the range.
+sklearn provides us with a useful utility called preprocessing.normalize() that can do that for us
 
 **Density Based Clustering** - DBSCAN - density based clustering with datasets with noise, do not have to specify a number of clusters - labels data points that are clustered together and other outliers as noise
