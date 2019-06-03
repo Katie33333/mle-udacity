@@ -44,3 +44,6 @@ Cons of HC: sensitive to noise and outliers
 * Core points
 * Noise points - does not have at least 5 points in its cluster (or whatever you set min_samples to)
 * Boarder point - part of cluster but not a core point
+
+Pros of DBSCAN: Don't need to specify number of clusters, flexibility in shapes and sizes of clusters, able to deal with noise and outliers
+Cons of DBSCAN: Border points reachable by 2 clusters are assigned to the one that finds them first, arbitrary so won't return the same answer in each case, faces difficulties in finding clusters with varying densities (can use HDBSCAN for this scenario) . IE: Network traffic - classify traffic like bitorrent example, anomoly detection of temperature
