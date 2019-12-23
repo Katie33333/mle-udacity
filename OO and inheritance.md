@@ -13,12 +13,31 @@ Notes
   
  ```
  class Clothing:
-   def...
-   def..
+   def __init__(self, color, style, size, style, price):
+     self.color = color
+     self.style = style
+     self.size = size
+     self.style = style
+     self.price = price
+     
+   def change_price(self, price):
+     self.price = price 
+     
+   def calculate_discount(self, discount):
+     return self.price * (1 - discount)
    
  class Shirt(Clothing):
-   def...
-   
+   def __init__(self, color, style, size, style, price, long_or_short):
+     
+     Clothing.__init__(self, color, size, style, price)
+     self.long_or_short = long_or_short
+     
+   def double_price(self):
+     self.price = 2*self.price
+     
  class Pants(Clothing):
    def...
  ```
+
+* Now the Shirt and Pants classes inherit attributes and methodes of the Clothing class.
+* The shirt object initializes itself using the Clothing object's init method
