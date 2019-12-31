@@ -41,3 +41,6 @@ Notes
 
 * Now the Shirt and Pants classes inherit attributes and methodes of the Clothing class.
 * The shirt object initializes itself using the Clothing object's init method
+
+
+
