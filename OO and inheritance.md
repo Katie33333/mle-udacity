@@ -43,4 +43,9 @@ Notes
 * The shirt object initializes itself using the Clothing object's init method
 
 
+**How to make a Python Package**
+* The __init__.py file tells Python this folder contains a package.  The code inside an init file gets run whenever you import a package inside of a Python program.  It can import a class from a module for example.
+* A setup.py file is at the same level as a distributions folder and is necessary for pip installing.  It'll contain metadata about the package like the pkg name, version, description etc
+* to install, go to teh dir containing the setup.py file and type: pip install .  (The dot tells pip to look for the setup file in the current folder.)
+* How to find out where the package was installed:  If you did an import of distributions, then you type `distributions.__file__`
 
